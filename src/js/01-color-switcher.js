@@ -21,13 +21,16 @@ function onClickBtnStart() {
 //   timeoutId = setTimeout(onClickBtnStart, NOTIFICATION_DELAY);
    timeoutId = setTimeout(() => {
       onClickBtnStart()
+      startbtn.setAttribute("disabled", true);
+       stoptbtn.setAttribute("disabled", false);
       console.log(timeoutId);
      
    },NOTIFICATION_DELAY);
 };
  
 function onClickBtnStop() {
-
+   stoptbtn.setAttribute("disabled", true);
+   startbtn.setAttribute("disabled", false);
     clearTimeout(timeoutId);
 };
 
