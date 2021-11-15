@@ -13,24 +13,38 @@ stoptbtn.addEventListener('click', onClickBtnStop);
 
 let timeoutId = null;
 const NOTIFICATION_DELAY = 1000;
+const isActiv = false;
 
 function onClickBtnStart() {
    const color = `${getRandomHexColor()}`;
    bodyCol.style.backgroundColor = color;
- 
+   // startbtn.setAttribute("disabled", true)
+   // if ('click') {
+   //     startbtn.setAttribute("disabled", false)
+   // }
+   // if ( startbtn.setAttribute("disabled", true)) {
+   //   stoptbtn.setAttribute("disabled", false);
+   // } else if (startbtn.setAttribute("disabled", false)) {
+   //  stoptbtn.setAttribute("disabled", true);
+   //  }
+  
 //   timeoutId = setTimeout(onClickBtnStart, NOTIFICATION_DELAY);
    timeoutId = setTimeout(() => {
-      onClickBtnStart()
-      startbtn.setAttribute("disabled", true);
-       stoptbtn.setAttribute("disabled", false);
+    onClickBtnStart()
+      // startbtn.setAttribute("disabled", true);
+      //  stoptbtn.setAttribute("disabled", false);
       console.log(timeoutId);
-     
+    
    },NOTIFICATION_DELAY);
 };
  
 function onClickBtnStop() {
-   stoptbtn.setAttribute("disabled", true);
-   startbtn.setAttribute("disabled", false);
+   // if (onClickBtnStop) {
+   //    stoptbtn.setAttribute("disabled", true);
+   // };
+   // stoptbtn.setAttribute("disabled", false);
+   // startbtn.setAttribute("disabled", false);
+   stoptbtn.setAttribute("disabled", false)
     clearTimeout(timeoutId);
 };
 
