@@ -19,7 +19,7 @@ const timer = {
    start() {
      
       const startTime = Date.now();
-      // console.log(dateTimeObj);
+      // console.log(startTime);
       setInterval(() => {
          const currentTime = Date.now();
          const dataTime = currentTime - startTime;
