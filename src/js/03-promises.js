@@ -17,12 +17,12 @@ e.preventDefault();
   const resOfAmount = user.amount;
   console.log(resOfAmount);
 
-  const delay = user.delay
+  const delay = user.delay;
   console.log(delay);
 
-  const position = user.step;
-  console.log(position);
- 
+  const step = user.step;
+  console.log(step);
+  position = 1;
   
   e.currentTarget.reset();
   
@@ -38,13 +38,13 @@ e.preventDefault();
       // Reject
       reject({ position, delay });
     
-       }, 2000)
+       }, delay)
   });
   };
 
 
 
-  createPromise(delay, position)
+  createPromise(position, delay)
     .then(({ position, delay }) => {
     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
   })
