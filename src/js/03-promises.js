@@ -6,26 +6,25 @@ function onSubmitForm(e) {
 e.preventDefault();
    const formData = new FormData(form);
   
-  
    const user = {};
    formData.forEach((value, name) => {
-      
        user[name] = value;
-      
-
    });
+  
   const resOfAmount = user.amount;
   console.log(resOfAmount);
-
+ 
   const delay = user.delay;
   console.log(delay);
 
   const step = user.step;
   console.log(step);
-  position = 1;
+ 
   
   e.currentTarget.reset();
-  
+
+  Promise.all(resOfAmount).then(x => { console.log(x)})
+  position = 1;
  
   const createPromise = (position, delay) => {
     return new Promise((resolve, reject) => {

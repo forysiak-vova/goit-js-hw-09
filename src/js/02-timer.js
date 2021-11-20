@@ -1,52 +1,56 @@
-// const data = new Date().getTime();
-// console.log(data);
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
 
-// setTimeout(() => {
-//    console.log(data);
-//    const date = new Date();
-//    console.log(date);
-// }, 3000);
-const docQuer = document.querySelector('#datetime-picker');
+const input = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[ data-start]');
+startBtn.setAttribute('disabled', true);
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+ onClose(selectedDates) {
+   //   console.log(selectedDates[0]);
+    
+     if (selectedDates[0] < Date.now()) {
+        window.alert("Please choose a date in the future")
+         startBtn.setAttribute('disabled', true);
+        return;
+    } startBtn.removeAttribute('disabled');
+    function counts() {
+   let now = new Date();
+       const dataTime = selectedDates[0] - now;
+       
+       const time = convertMs(dataTime);
+      //  console.log(time);
+      //  console.log(time.days);
+       document.querySelector('[data-days]').innerText = time.days;
+       document.querySelector('[data-hours]').innerText = time.hours;
+       document.querySelector('[data-minutes]').innerText = time.minutes;
+       document.querySelector('[data-seconds]').innerText = time.seconds;
+    }
+    counts();
+    startBtn.addEventListener('click', () => {
+       setInterval(counts, 1000);
+       startBtn.setAttribute('disabled', true);
+       input.setAttribute('disabled', true);
+    });
+  },
+};
 
 
-console.log(docQuer.value);
+flatpickr("input[type=text]", options);
+
+const docQuer = document.querySelector('#datetime-picker');
+
+
+
+
+
+// console.log(docQuer.value);
 // const res = docQuer.textContent
 // const docQuer = document.createElements();
-const isActive = false;
-const timer = {
-   
-   start() {
-     
-      const startTime = Date.now();
-      // console.log(startTime);
-      setInterval(() => {
-         const currentTime = Date.now();
-         const dataTime = currentTime - startTime;
-         const time = convertMs(dataTime);
-         // console.log(`${days}:${hours}:${minutes}:${seconds}`);
-         // const resOfTime = (`${days}:${hours}:${minutes}:${seconds}`)
-         updateInputFace(time);
 
-     
-         
-      },1000);
-   }
-   
-};
-
-startBtn.addEventListener('click', () => {
-   //  if (isActive) {
-   //       return
-   // }
-    startBtn.setAttribute("disabled", false)
-   timer.start();
-
-});
-
-function updateInputFace({days,hours,minutes,seconds}) {
-   docQuer.value = `${days}:${hours}:${minutes}:${seconds}`;
-};
 
 // ==================== функція додає знаки до значення ==================================================================
 function addLeadingZero(value) {
@@ -74,3 +78,41 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 // ========================================================================================================================
+
+
+// ====================================== таймер вперед ====================================
+// const isActive = false;
+// const timer = {
+   
+//    start() {
+     
+//       const startTime = Date.now();
+//       // console.log(startTime);
+//       setInterval(() => {
+//          const currentTime = Date.now();
+//          const dataTime = currentTime - startTime;
+//          const time = convertMs(dataTime);
+//          // console.log(`${days}:${hours}:${minutes}:${seconds}`);
+//          // const resOfTime = (`${days}:${hours}:${minutes}:${seconds}`)
+//          updateInputFace(time);
+
+     
+         
+//       },1000);
+//    }
+   
+// };
+
+// startBtn.addEventListener('click', () => {
+//    //  if (isActive) {
+//    //       return
+//    // }
+//     startBtn.setAttribute("disabled", false)
+//    timer.start();
+
+// });
+
+// function updateInputFace({days,hours,minutes,seconds}) {
+//    docQuer.value = `${days}:${hours}:${minutes}:${seconds}`;
+// };
+// =======================================================================================================================
