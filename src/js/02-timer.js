@@ -1,5 +1,6 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import Notiflix from 'notiflix';
 
 const input = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[ data-start]');
@@ -13,43 +14,34 @@ const options = {
    //   console.log(selectedDates[0]);
     
      if (selectedDates[0] < Date.now()) {
-        window.alert("Please choose a date in the future")
+       Notiflix.Notify.failure("Please choose a date in the future")
          startBtn.setAttribute('disabled', true);
         return;
-    } startBtn.removeAttribute('disabled');
-    function counts() {
+   } startBtn.removeAttribute('disabled');
+   
+    startBtn.addEventListener('click', () => {
+      function counts() {
    let now = new Date();
        const dataTime = selectedDates[0] - now;
-       
-       const time = convertMs(dataTime);
-      //  console.log(time);
-      //  console.log(time.days);
+      let time = convertMs(dataTime);
+      
+      if (dataTime < 0) {
+        return;
+       }
        document.querySelector('[data-days]').innerText = time.days;
        document.querySelector('[data-hours]').innerText = time.hours;
        document.querySelector('[data-minutes]').innerText = time.minutes;
        document.querySelector('[data-seconds]').innerText = time.seconds;
-    }
-    counts();
-    startBtn.addEventListener('click', () => {
-       setInterval(counts, 1000);
+   };
+        setInterval(counts, 1000);
        startBtn.setAttribute('disabled', true);
-       input.setAttribute('disabled', true);
+      input.setAttribute('disabled', true);
     });
   },
 };
 
 
 flatpickr("input[type=text]", options);
-
-const docQuer = document.querySelector('#datetime-picker');
-
-
-
-
-
-// console.log(docQuer.value);
-// const res = docQuer.textContent
-// const docQuer = document.createElements();
 
 
 // ==================== функція додає знаки до значення ==================================================================

@@ -32,6 +32,7 @@ function onClickBtnStart() {
 };
  
 function onClickBtnStop() {
+  
    startbtn.removeAttribute('disabled');
    stoptbtn.setAttribute("disabled", true);
     
