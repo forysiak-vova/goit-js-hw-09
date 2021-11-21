@@ -28,19 +28,10 @@ e.preventDefault();
   let step = Number(stepUser);
   for (let i = 1; i <= amount; i += 1) {
     position = i;
-    // delay = delay + resOfDelay + resOfStep;
-    // if (position === 1) {
-    //   delay += resOfDelay;
-    //   console.log(delay)
-    // } else if (position >= 2) {
-    //   delay += resOfStep;
-    //   console.log(delay);
-    // }
-  
+    
+   
     delay += step
-    // console.log( delay += user.step);
-  // console.log(i)
-    // delay = delay + resOfStep;
+    
     
   
     const createPromise = (position, delay) => {
@@ -67,14 +58,9 @@ e.preventDefault();
   })
   .catch(({ position, delay }) => {
    Notiflix.Notify.failure(` Rejected promise ${position} in ${delay}ms`);
-  });
-    
-    
+  }); 
   };
  
-
- // console.log(position);
-  
   // e.currentTarget.reset();
 
   // Promise.all(resOfAmount).then(x => { console.log(x)})
