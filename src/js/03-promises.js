@@ -68,6 +68,29 @@ e.preventDefault();
 };
 
 
+// ============================================================================
+// const refs = {
+//     form: document.querySelector('.form'),
+//     inputDelay: document.querySelector('[name="delay"]'),
+//     inpuStep: document.querySelector('[name="step"]'),
+//     inputAmount: document.querySelector('[name="amount"]'),
+// }
+// console.log(refs.inputDelay);
+
+
+// refs.form.addEventListener('submit', onSubmitForm);
+
+// function onSubmitForm(e) {
+//     e.preventDefault();
+
+//     // let formData = new FormData([form]);
+//   // console.log(formData);
+//   console.log(refs.inputDelay.value);
+//   console.log(refs.inpuStep.value);
+//   console.log(refs.inputAmount.value);
+// }
+
+
 
 // ============================================================================
 
